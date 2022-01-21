@@ -1,8 +1,8 @@
-import BabyYodaPointer from './components/BabyYodaPointer';
+import GameBoard from './components/GameBoard';
 
 function App() {
   return (
-    <BabyYodaPointer />
+    <GameBoard />
   );
 }
 
