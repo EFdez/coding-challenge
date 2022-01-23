@@ -1,8 +1,8 @@
-import GameBoard from './components/GameBoard';
-
 function App() {
   return (
-    <GameBoard />
+    <>
+    <p>home, index, app</p>
+    </>
   );
 }
 
