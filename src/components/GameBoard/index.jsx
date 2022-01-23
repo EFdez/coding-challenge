@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import "./index.css";
-import BabyYodaPointer from "../BabyYodaPointer";
+import BabyYodaIllustration from "../BabyYodaIllustration";
 import Stepper from "../Stepper";
 
 const GameBoard = () => {
@@ -66,8 +66,9 @@ const GameBoard = () => {
       <button onClick={getRandomNumber}>TIRA EL DADO</button>
       <p>Ha salido el nº {diceNumber}</p>
 
-      <div className="pointer-wrapper">{/* <BabyYodaPointer /> */}</div>
+      <div className="pointer-wrapper">{/* <BabyYodaIllustration /> */}</div>
       <Stepper />
+
     </div>
   );
 };

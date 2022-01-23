@@ -3,7 +3,7 @@ import React from "react";
 import "./index.css";
 
 //fue bonito mientras duró
-const BabyYodaPointer = () => {
+const BabyYodaIllustration = () => {
   return (
     <> 
       <div id="background">
@@ -33,4 +33,4 @@ const BabyYodaPointer = () => {
   );
 };
 
-export default BabyYodaPointer;
+export default BabyYodaIllustration;
