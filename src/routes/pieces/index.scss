@@ -1,0 +1,55 @@
+.Pieces {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+  padding-bottom: 3rem;
+
+  &_container {
+    width: 100%;
+  }
+  &_list-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .Piece {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    margin-bottom: 3rem;
+    height: 200px;
+    align-items: center;
+    justify-content: flex-start;
+    > h5 {
+      margin-left: 0.5rem;
+    }
+    &_cookies {
+      display: flex;
+      flex-direction: column;
+    }
+    &_eggs {
+      display: flex;
+      flex-direction: column;
+      > div {
+        margin-bottom: 0.7rem;
+      }
+    }
+  }
+}
+
+.text-figure-footer {
+  font-family: "Mandalore";
+  width: 100%;
+  + .grogu-svg {
+    margin-top: 1rem;
+  }
+
+  + .wardrobe-svg {
+    margin-top: 1.25rem;
+    width: 80px;
+    height: 80px;
+  }
+}

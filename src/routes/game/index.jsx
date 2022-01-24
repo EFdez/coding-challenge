@@ -1,12 +1,12 @@
 import React from "react";
 
 import GameBoard from "../../components/GameBoard";
+import Dice from "../../components/Dice/Dice";
 
 const Game = () => {
   return (
     <>
-      <p>El juego como tallll</p>
-      <GameBoard />
+      <Dice number={5} rolling={true} />
     </>
   );
 };
