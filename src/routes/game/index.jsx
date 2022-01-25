@@ -1,7 +1,6 @@
 import React from "react";
 
 import GameBoard from "../../components/GameBoard";
-import BabyYodaIllustration from "../../components/BabyYodaIllustration";
 
 import { Grid, Cell } from "react-foundation";
 

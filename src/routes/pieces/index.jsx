@@ -25,7 +25,7 @@ const Pieces = () => {
               <h2 className="text-figure-footer text-center">Zona de carga</h2>
             </Cell>
             <Cell className="loadZone">
-              <LoadZone roadLenght={7} />
+              <LoadZone roadLenght={7} empty={true} />
             </Cell>
           </Grid>
 

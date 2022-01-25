@@ -7,7 +7,6 @@ const FoodContainer = ({
   separator = false,
   unload = 3,
 }) => {
-  console.log(unload);
   return (
     <div className={`Piece ${separator && "pieces_separator"}`}>
       <h2 className="text-figure-footer">

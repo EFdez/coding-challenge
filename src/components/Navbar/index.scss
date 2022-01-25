@@ -9,7 +9,7 @@
   border-radius: 5px;
   margin: 3rem;
   padding: 1rem;
-  z-index: 9999;
+  z-index: 50;
 
   &_links {
     display: flex;
@@ -17,13 +17,12 @@
   }
   a {
     color: black;
-    &:active{
-        color: #fcc433;
+    &:active {
+      color: #fcc433;
     }
   }
 }
 
-
 .active {
-    text-decoration: underline;
-  }
+  text-decoration: underline;
+}

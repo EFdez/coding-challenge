@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import "./index.css";
+import "./index.scss";
+
+import Modal from "react-modal";
 
 import { ReactComponent as Egg } from "../../assets/images/Egg.svg";
 import { ReactComponent as Cookie } from "../../assets/images/Cookie.svg";
@@ -25,6 +27,17 @@ const GameBoard = () => {
   const [diceNumber, setDiceNumber] = useState(undefined);
   const [groguPosition, setGroguPosition] = useState(0);
   const [winner, setWinner] = useState(undefined);
+
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    window.location.reload(false);
+  }
 
   const getRandomNumber = () => {
     const randomNumber = Math.floor(Math.random() * (1, DICE_FACES) + 1);
@@ -58,17 +71,16 @@ const GameBoard = () => {
   };
 
   useEffect(() => {
-    console.log(tastyThings);
     const checkEmptyTastyThings = Object.values(tastyThings).every(
       (elm) => elm === 0
     );
     if (groguPosition === MAX_LENGTH_ROAD) {
-      console.log("GROGU WINNNNS");
-      setWinner("GROGU TE HA GANADO!");
+      setWinner("Grogu");
+      openModal(winner);
     }
     if (checkEmptyTastyThings) {
-      console.log("MANDO WINSSS");
-      setWinner("¡HAS GANADO!");
+      setWinner("Mando");
+      openModal(winner);
     }
   }, [tastyThings, groguPosition, winner]);
 
@@ -79,7 +91,9 @@ const GameBoard = () => {
           <button className="cursor-pointer" onClick={getRandomNumber}>
             <Dice number={diceNumber ? diceNumber : 5} />
           </button>
-          {diceNumber && <p>Ha salido el nº {diceNumber}</p>}
+          <p className={`${diceNumber ? "" : "hidden"}`}>
+            Ha salido el nº {diceNumber}
+          </p>
         </Cell>
       </Grid>
 
@@ -94,18 +108,73 @@ const GameBoard = () => {
 
       <Grid className="display GameBoard_container text-center">
         <Cell medium={12} className="Pieces_list-wrapper">
-          <FoodContainer food="frog" Icon={Frog} title="Ranas" unload={tastyThings['frog']}/>
+          <FoodContainer
+            food="frog"
+            Icon={Frog}
+            title="Ranas"
+            unload={tastyThings["frog"]}
+          />
 
           <FoodContainer
             food="egg"
             Icon={Egg}
             title="Huevos de rana"
             separator={true}
-            unload={tastyThings['egg']}
+            unload={tastyThings["egg"]}
           />
-          <FoodContainer food="cookie" Icon={Cookie} title="galletas" unload={tastyThings['cookie']} />
+          <FoodContainer
+            food="cookie"
+            Icon={Cookie}
+            title="galletas"
+            unload={tastyThings["cookie"]}
+          />
         </Cell>
       </Grid>
+
+      <div>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          className="Modal"
+          overlayClassName="Overlay"
+          ariaHideApp={false}
+        >
+          <Grid className="display GameBoard_container">
+            <Cell medium={12}>
+              <button
+                onClick={closeModal}
+                className="Modal_close text-mandalore text-bigger"
+              >
+                close
+              </button>
+              <div className="Modal_container text-center">
+                {winner === "Mando" ? (
+                  <>
+                    <h3 className="text-mandalore text-bigger">HAS GANADO</h3>
+                    <img
+                      src="https://nerdist.com/wp-content/uploads/2020/11/Nov-20-2020-08-36-54.gif"
+                      alt="mando wins"
+                      width={1020}
+                    />
+                    <p>
+                      Pero igual podías darle alguna galletita o algo... no sé.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="text-mandalore text-bigger">HAS PERDIDO</h3>{" "}
+                    <img
+                      src="https://frikinerd.com/wp-content/uploads/2020/03/baby-yoda-mandaloriano.gif"
+                      alt="mando wins"
+                      width={850}
+                    />
+                  </>
+                )}
+              </div>
+            </Cell>
+          </Grid>
+        </Modal>
+      </div>
     </>
   );
 };
