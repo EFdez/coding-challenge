@@ -8,7 +8,9 @@ import { ReactComponent as Frog } from "../../assets/images/Frog.svg";
 import { ReactComponent as GroguPod } from "../../assets/images/Grogu-Pod.svg";
 import { ReactComponent as Wardrobe } from "../../assets/images/Wardrobe.svg";
 
-import Dice from "../../components/Dice/Dice";
+import Dice from "../../components/Dice";
+import FoodContainer from "../../components/FoodContainer";
+import LoadZone from "../../components/LoadZone";
 
 import "./index.scss";
 
@@ -17,73 +19,49 @@ const Pieces = () => {
     <Grid className="grid-container Pieces">
       <Grid medium={10} className="display Pieces_container">
         <Cell>
-          <h1 className="text-bigger text-mandalore">Fichas</h1>
+          <h1 className="text-bigger text-mandalore">FichAs</h1>
           <Grid className="display Pieces_container">
-            <Cell className="Pieces_list-wrapper">
-              <div>Zona de cargsdfsa</div>
-            </Cell>
             <Cell medium={10} className="Pieces_list-wrapper medium-offset-1">
-              <h3 className="text-figure-footer text-center">
-                Zona de carga
-              </h3>
+              <h2 className="text-figure-footer text-center">Zona de carga</h2>
+            </Cell>
+            <Cell className="loadZone">
+              <LoadZone roadLenght={7} />
             </Cell>
           </Grid>
 
           <Grid medium={10} className="display Pieces_container text-center">
             <Cell medium={10} className="Pieces_list-wrapper medium-offset-1">
               <div className="Piece">
-                <h3 className="text-figure-footer">Armario</h3>
+                <h2 className="text-figure-footer">Armario</h2>
                 <div className="wardrobe-svg">
                   <Wardrobe />
                 </div>
               </div>
-              <div className="Piece">
-                <h3 className="text-figure-footer">Grogu</h3>
+              <div className="Piece pieces_separator">
+                <h2 className="text-figure-footer">Grogu</h2>
                 <div className="grogu-svg">
                   <GroguPod />
                 </div>
               </div>
               <div className="Piece">
-                <h3 className="text-figure-footer">DadO</h3>
-                <Dice number={5} rolling={false} />
+                <h2 className="text-figure-footer">DadO</h2>
+                <Dice number={5} />
               </div>
             </Cell>
           </Grid>
 
           <Grid className="display text-center">
-            <h2 className="text-figure-footer text-center">Recipientes con:</h2>
+            <h3 className="text-figure-footer text-center">Recipientes con:</h3>
             <Cell medium={12} className="Pieces_list-wrapper ">
-              <div className="Piece">
-                <h3 className="text-figure-footer">x3 Ranas</h3>
-                <div className="egg-svg Piece_eggs">
-                  <div>
-                    <Egg />
-                  </div>
-                  <div>
-                    <Egg />
-                  </div>
-                  <div>
-                    <Egg />
-                  </div>
-                </div>
-              </div>
-              <div className="Piece">
-                <h3 className="text-figure-footer">x3 Huevos de rana</h3>
-              </div>
-              <div className="Piece">
-                <h4 className="text-figure-footer">x3 Galletas</h4>
-                <div className="cookie-svg Piece_cookies">
-                  <div>
-                    <Cookie />
-                  </div>
-                  <div>
-                    <Cookie />
-                  </div>
-                  <div>
-                    <Cookie />
-                  </div>
-                </div>
-              </div>
+              <FoodContainer food="frog" Icon={Frog} title="Ranas" />
+
+              <FoodContainer
+                food="egg"
+                Icon={Egg}
+                title="Huevos de rana"
+                separator={true}
+              />
+              <FoodContainer food="cookie" Icon={Cookie} title="galletas" />
             </Cell>
           </Grid>
         </Cell>

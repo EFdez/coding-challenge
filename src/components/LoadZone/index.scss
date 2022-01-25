@@ -1,0 +1,19 @@
+.roadTile-wrapper {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding:3rem;
+    margin-bottom: 3rem;
+}
+
+.roadTile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 13%;
+    border-bottom: 3px black solid;
+    height: 50px;
+}

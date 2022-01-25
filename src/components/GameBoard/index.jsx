@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
 
 import "./index.css";
-import BabyYodaIllustration from "../BabyYodaIllustration";
-import Stepper from "../Stepper";
+
+import { ReactComponent as Egg } from "../../assets/images/Egg.svg";
+import { ReactComponent as Cookie } from "../../assets/images/Cookie.svg";
+import { ReactComponent as Frog } from "../../assets/images/Frog.svg";
+
+import Dice from "../../components/Dice";
+import LoadZone from "../../components/LoadZone";
+import FoodContainer from "../../components/FoodContainer";
 
 import { Grid, Cell } from "react-foundation";
 
-
 const GameBoard = () => {
   const MAX_CONTAINER_ITEMS = 3;
-  const MAX_LENGTH_ROAD = 6; //USAR PARA COMPONENTE CAMINIIIITO
+  const MAX_LENGTH_ROAD = 7;
   const DICE_FACES = 5;
 
   const [tastyThings, setTastyThings] = useState({
@@ -17,8 +22,9 @@ const GameBoard = () => {
     frog: MAX_CONTAINER_ITEMS,
     egg: MAX_CONTAINER_ITEMS,
   });
-  const [diceNumber, setDiceNumber] = useState(undefined); //USAR PARA COMPONENTE DADO
+  const [diceNumber, setDiceNumber] = useState(undefined);
   const [groguPosition, setGroguPosition] = useState(0);
+  const [winner, setWinner] = useState(undefined);
 
   const getRandomNumber = () => {
     const randomNumber = Math.floor(Math.random() * (1, DICE_FACES) + 1);
@@ -30,10 +36,8 @@ const GameBoard = () => {
     if (tastyThings[thing] > 0) {
       setTastyThings((prevState) => ({
         ...prevState,
-        [thing]: tastyThings[thing]--,
+        [thing]: tastyThings[thing] - 1,
       }));
-    } else {
-      console.log(`no hay más ${thing} para descargar`);
     }
   };
 
@@ -55,31 +59,54 @@ const GameBoard = () => {
 
   useEffect(() => {
     console.log(tastyThings);
-    console.log("GroguPosition", groguPosition);
     const checkEmptyTastyThings = Object.values(tastyThings).every(
       (elm) => elm === 0
     );
-    if (groguPosition == MAX_LENGTH_ROAD) {
+    if (groguPosition === MAX_LENGTH_ROAD) {
       console.log("GROGU WINNNNS");
+      setWinner("GROGU TE HA GANADO!");
     }
     if (checkEmptyTastyThings) {
       console.log("MANDO WINSSS");
+      setWinner("¡HAS GANADO!");
     }
-  }, [tastyThings, groguPosition]);
+  }, [tastyThings, groguPosition, winner]);
 
   return (
-    <Grid className="grid-container fluid GameBoard_container">
-      <Cell large={12}>
-      <h1 className="text-mandalore text-bigger">Juego</h1>
+    <>
+      <Grid medium={10} className="display GameBoard_container text-center">
+        <Cell medium={10} className="medium-offset-1">
+          <button className="cursor-pointer" onClick={getRandomNumber}>
+            <Dice number={diceNumber ? diceNumber : 5} />
+          </button>
+          {diceNumber && <p>Ha salido el nº {diceNumber}</p>}
+        </Cell>
+      </Grid>
 
-      <button onClick={getRandomNumber}>TIRA EL DADO</button>
-      <p>Ha salido el nº {diceNumber}</p>
+      <Grid medium={10} className="display GameBoard_container text-center">
+        <Cell medium={10} className="medium-offset-1">
+          <LoadZone
+            roadLenght={MAX_LENGTH_ROAD}
+            groguPosition={groguPosition}
+          />
+        </Cell>
+      </Grid>
 
-      <div className="pointer-wrapper">{/* <BabyYodaIllustration /> */}</div>
-      <Stepper />
-      </Cell>
-    </Grid>
+      <Grid className="display GameBoard_container text-center">
+        <Cell medium={12} className="Pieces_list-wrapper">
+          <FoodContainer food="frog" Icon={Frog} title="Ranas" unload={tastyThings['frog']}/>
 
+          <FoodContainer
+            food="egg"
+            Icon={Egg}
+            title="Huevos de rana"
+            separator={true}
+            unload={tastyThings['egg']}
+          />
+          <FoodContainer food="cookie" Icon={Cookie} title="galletas" unload={tastyThings['cookie']} />
+        </Cell>
+      </Grid>
+    </>
   );
 };
 

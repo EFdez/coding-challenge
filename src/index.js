@@ -2,10 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import "./index.css";
-import App from "./App";
+import 'foundation-sites/dist/css/foundation.min.css';
+import 'font-awesome/css/font-awesome.min.css';
+import "./index.scss";
+
 import Navbar from "./components/Navbar";
 
+import Home from "./routes/home";
 import Rules from "./routes/rules";
 import Pieces from "./routes/pieces";
 import Game from "./routes/game";
@@ -15,7 +18,7 @@ ReactDOM.render(
     <div className="App_container">
       <Navbar />
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Home />} />
         <Route path="rules" element={<Rules />} />
         <Route path="pieces" element={<Pieces />} />
         <Route path="game" element={<Game />} />
