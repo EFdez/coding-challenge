@@ -5,7 +5,7 @@ import BabyYodaIllustration from "../../components/BabyYodaIllustration";
 
 import "./index.css";
 
-function App() {
+function Home() {
   return (
     <Grid className="grid-container Pieces">
       <Grid medium={10} className="display Pieces_container">
@@ -19,4 +19,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

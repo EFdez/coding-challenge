@@ -8,7 +8,7 @@ import "./index.scss";
 
 import Navbar from "./components/Navbar";
 
-import App from "./routes/app";
+import Home from "./routes/home";
 import Rules from "./routes/rules";
 import Pieces from "./routes/pieces";
 import Game from "./routes/game";
@@ -18,7 +18,7 @@ ReactDOM.render(
     <div className="App_container">
       <Navbar />
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Home />} />
         <Route path="rules" element={<Rules />} />
         <Route path="pieces" element={<Pieces />} />
         <Route path="game" element={<Game />} />
