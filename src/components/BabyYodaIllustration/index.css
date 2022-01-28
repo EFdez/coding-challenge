@@ -2,30 +2,35 @@
 src: https://codepen.io/captainpainway/pen/rNjXPJd?editors=1100
 
 */ 
-  
-  #background {
-    position: absolute;
-    left: 50%;
-    top: 58%;
-    transform: translate(-50%, -50%);
-    display: block;
-    width: 500px;
-    height: 600px;
-    background: #97a8dc;
-    background: linear-gradient(
-      0deg,
-      rgba(148, 128, 105, 1) 0%,
-      rgba(224, 204, 180, 1) 35%,
-      rgba(151, 168, 220, 1) 35%,
-      rgba(91, 114, 184, 1) 100%
-    );
-    border-radius: 50%;
+
+.css-art_container {
+  position: relative;
+  height: 60vh;
+  background: #97a8dc;
+  background: linear-gradient(
+    0deg,
+    rgba(148, 128, 105, 1) 0%,
+    rgba(224, 204, 180, 1) 35%,
+    rgba(151, 168, 220, 1) 35%,
+    rgba(91, 114, 184, 1) 100%
+  );
+}
+
+.css-art_text{
+  color: yellow;
+  padding: 3rem;
+  border: 1px solid red;
+  width: 30%;
+  @media screen and (max-width: 39.9375em) {
+    width:100%;
   }
+
+}
   
   #suns {
     position: absolute;
-    left: 60%;
-    top: 15%;
+    left: 70%;
+    top: 20%;
     width: 100px;
     height: 100px;
     background-color: #d2ad80;
@@ -46,7 +51,7 @@ src: https://codepen.io/captainpainway/pen/rNjXPJd?editors=1100
   #egg_back {
     position: absolute;
     left: 50%;
-    top: 36%;
+    top: 40%;
     transform: translate(-50%);
     display: block;
     width: 0;
@@ -85,32 +90,6 @@ src: https://codepen.io/captainpainway/pen/rNjXPJd?editors=1100
     background-color: #dae3e7;
   }
   
-  #egg_lid_left {
-    position: absolute;
-    display: block;
-    transform-origin: bottom right;
-    transform: rotate(-90deg);
-    top: -140px;
-    left: -145px;
-    width: 0;
-    height: 0;
-    border-top: 145px solid #ccd6db;
-    border-left: 145px solid #ccd6db;
-    border-top-left-radius: 135px;
-  }
-  
-  #egg_lid_right {
-    position: absolute;
-    display: block;
-    transform-origin: bottom left;
-    transform: rotate(90deg);
-    top: -140px;
-    width: 0;
-    height: 0;
-    border-top: 145px solid #ccd6db;
-    border-right: 145px solid #ccd6db;
-    border-top-right-radius: 135px;
-  }
   
   #grogu {
     position: absolute;
@@ -274,24 +253,23 @@ src: https://codepen.io/captainpainway/pen/rNjXPJd?editors=1100
   
   #left_hand {
     position: absolute;
-    top: calc(50% + 55px);
-    left: 38%;
+    left: 55px;
     background-color: #98af98;
     width: 20px;
     height: 20px;
     border-radius: 20% 20% 50% 50%;
-    animation: 2s infinite alternate egg_bounce;
+    z-index: 1;
   }
   
   #right_hand {
     position: absolute;
-    top: calc(50% + 55px);
-    left: 62%;
+    left: -75px;
     background-color: #98af98;
     width: 20px;
     height: 20px;
     border-radius: 20% 20% 50% 50%;
-    animation: 2s infinite alternate egg_bounce;
+    z-index: 1;
+
   }
   
   @keyframes egg_bounce {

@@ -17,56 +17,40 @@ import "./index.scss";
 const Pieces = () => {
   return (
     <Grid className="grid-container Pieces">
-      <Grid medium={10} className="display Pieces_container">
-        <Cell>
+        <Cell small={10} className="small-offset-1">
           <h1 className="text-bigger text-mandalore">FichAs</h1>
-          <Grid className="display Pieces_container">
-            <Cell medium={10} className="Pieces_list-wrapper medium-offset-1">
-              <h2 className="text-figure-footer text-center">Zona de carga</h2>
-            </Cell>
-            <Cell className="loadZone">
-              <LoadZone roadLenght={7} empty={true} />
-            </Cell>
-          </Grid>
+          <h2 className="text-figure-footer text-center">Zona de carga</h2>
+          <Cell className="loadZone">
+            <LoadZone roadLenght={7} empty={true} />
+          </Cell>
 
-          <Grid medium={10} className="display Pieces_container text-center">
-            <Cell medium={10} className="Pieces_list-wrapper medium-offset-1">
-              <div className="Piece">
-                <h2 className="text-figure-footer">Armario</h2>
-                <div className="wardrobe-svg">
-                  <Wardrobe />
-                </div>
+          <Cell className="Pieces_list-wrapper text-center">
+            <div className="Piece">
+              <h2 className="text-figure-footer">Armario</h2>
+              <div className="wardrobe-svg">
+                <Wardrobe />
               </div>
-              <div className="Piece pieces_separator">
-                <h2 className="text-figure-footer">Grogu</h2>
-                <div className="grogu-svg">
-                  <GroguPod />
-                </div>
+            </div>
+            <div className="Piece pieces_separator">
+              <h2 className="text-figure-footer">Grogu</h2>
+              <div className="grogu-svg">
+                <GroguPod />
               </div>
-              <div className="Piece">
-                <h2 className="text-figure-footer">DadO</h2>
-                <Dice number={5} />
-              </div>
-            </Cell>
-          </Grid>
+            </div>
+            <div className="Piece">
+              <h2 className="text-figure-footer">DadO</h2>
+              <Dice number={5} animation={false}/>
+            </div>
+          </Cell>
 
-          <Grid className="display text-center">
-            <h3 className="text-figure-footer text-center">Recipientes con:</h3>
-            <Cell medium={12} className="Pieces_list-wrapper ">
-              <FoodContainer food="frog" Icon={Frog} title="Ranas" />
-
-              <FoodContainer
-                food="egg"
-                Icon={Egg}
-                title="Huevos de rana"
-                separator={true}
-              />
-              <FoodContainer food="cookie" Icon={Cookie} title="galletas" />
-            </Cell>
-          </Grid>
+          <h3 className="text-figure-footer text-center">Recipientes con:</h3>
+          <Cell className="Pieces_list-wrapper text-center">
+            <FoodContainer food="frog" Icon={Frog} title="Ranas" />
+            <FoodContainer food="egg" Icon={Egg} title="Huevos de rana" separator={true} />
+            <FoodContainer food="cookie" Icon={Cookie} title="galletas" />
+          </Cell>
         </Cell>
       </Grid>
-    </Grid>
   );
 };
 

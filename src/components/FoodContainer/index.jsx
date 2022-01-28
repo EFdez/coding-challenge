@@ -12,37 +12,21 @@ const FoodContainer = ({
       <h2 className="text-figure-footer">
         x{unload} {title}
       </h2>
-      <div className={`${food}-svg Piece_horizontal`}>
-        {unload == 1 && (
+      <div className="Piece">
+        <div className={`${food}-svg Piece_horizontal`}>
           <div className={`Piece_${food}`}>
             <Icon />
           </div>
-        )}
-        {unload === 2 && (
-          <>
-            <div className={`Piece_${food}`}>
-              <Icon />
-            </div>
-            <div className={`Piece_${food}`}>
-              <Icon />
-            </div>
-          </>
-        )}
-        {unload === 3 && (
-          <>
-            <div className={`Piece_${food}`}>
-              <Icon />
-            </div>
-            <div className={`Piece_${food}`}>
-              <Icon />
-            </div>
-            <div className={`Piece_${food}`}>
-              <Icon />
-            </div>
-          </>
-        )}
+          <div className={`Piece_${food}`}>
+            <Icon />
+          </div>
+          <div className={`Piece_${food}`}>
+            <Icon />
+          </div>
+        </div>
       </div>
     </div>
+
   );
 };
 

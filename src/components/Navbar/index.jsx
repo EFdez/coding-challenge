@@ -1,37 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
+
 import { NavLink } from "react-router-dom";
-import { ReactComponent as MandoBeibiIcon } from "../../assets/images/Mando-Beibi.svg";
 import { Grid, Cell } from "react-foundation";
+import { ReactComponent as MandoBeibiIcon } from "../../assets/images/Mando-Beibi.svg";
 
 import "./index.scss";
 
 const Navbar = () => {
+
+  const [isActive, setActive] = useState(false);
+
+  let toggleClassCollapsedMenu = () => {
+    setActive(!isActive);
+  }
+
   return (
-    <Grid className="Navbar display">
-      <Cell large={2} small={4} className="Navbar_icon">
-        <NavLink className={({ isActive }) => isActive ? "active" : undefined} to="/">
-          <MandoBeibiIcon />
-        </NavLink>
-      </Cell>
-      <Cell
-        large={9}
-        small={6}
-        className="Navbar_links text-mandalore text-big"
-      >
-        <NavLink className={({ isActive }) => isActive ? "active" : undefined} to="/rules">
-          <span>Reglas del juego</span>
-        </NavLink>
-        <NavLink
-          className={({ isActive }) => isActive ? "active" : undefined}
-          to="/pieces"
+    <>
+      <Grid className="Navbar display">
+        <Cell small={6} medium={1}>
+          <NavLink className={({ isActive }) => isActive ? "active" : undefined} to="/">
+            <MandoBeibiIcon />
+          </NavLink>
+        </Cell>
+        <Cell
+          medium={9}
+          className="Navbar_links text-mandalore text-big show-for-medium"
         >
-          <span>Fichas</span>
-        </NavLink>
-        <NavLink className={({ isActive }) => isActive ? "active" : undefined} to="/game">
-          <span>Juego</span>
-        </NavLink>
-      </Cell>
-    </Grid>
+          <NavLink className={({ isActive }) => isActive ? "active" : undefined} to="/rules">
+            <span>Reglas del juego</span>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => isActive ? "active" : undefined}
+            to="/pieces"
+          >
+            <span>Fichas</span>
+          </NavLink>
+          <NavLink className={({ isActive }) => isActive ? "active" : undefined} to="/game">
+            <span>Juego</span>
+          </NavLink>
+        </Cell>
+
+        <Cell
+          small={6}
+          className="show-for-small-only Navbar_collapsed"
+        >
+          <div onClick={toggleClassCollapsedMenu} className={`icon ${isActive && 'icon-active'}`}></div>
+        </Cell>
+
+      </Grid>
+
+      {isActive &&
+        (<div className='Collapsed-menu show-for-small-only'>
+          <Grid className="Navbar Collapsed-menu_container">
+            <Cell className="Navbar_links">
+              <a onclick={toggleClassCollapsedMenu} href="/rules">Reglas del juego</a>
+              <a onclick={toggleClassCollapsedMenu} href="/pieces">Fichas</a>
+              <a onclick={toggleClassCollapsedMenu} href="/game">Juego</a>
+            </Cell>
+          </Grid>
+        </div>
+        )}
+    </>
   );
 };
 

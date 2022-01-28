@@ -5,8 +5,10 @@ import "./index.css";
 //fue bonito mientras duró
 const BabyYodaIllustration = () => {
   return (
-    <> 
-      <div id="background">
+    <>
+      <div className="css-art_text-small"><p>donde te pintas?</p></div>
+      <div className='css-art_container show-for-medium'>
+        <div className="css-art_text"><p>donde te pintas?</p></div>
         <div id="suns"></div>
         <div id='container_grogu'>
           <div id="egg_back"></div>
@@ -22,11 +24,10 @@ const BabyYodaIllustration = () => {
             <div id="collar"></div>
           </div>
           <div id="egg">
-            <div id="egg_lid_left"></div>
-            <div id="egg_lid_right"></div>
+            <div id="left_hand"></div>
+            <div id="right_hand"></div>
           </div>
-          <div id="left_hand"></div>
-          <div id="right_hand"></div>
+
         </div>
       </div>
     </>

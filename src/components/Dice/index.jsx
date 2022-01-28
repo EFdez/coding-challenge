@@ -2,13 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import "./index.scss";
 
-const Dice = ({ number = 0 }) => {
-  const [rollingDice, setRollingDice] = useState(true);
-
-  useEffect(() => {
-    convertNumberToEnglish(number);
-    showAnimationDice();
-  }, [number]);
+const Dice = ({ number = 0, animation = true }) => {
+  const [rollingDice, setRollingDice] = useState(false);
 
   const convertNumberToEnglish = (number) => {
     const englishList = ["zero", "one", "two", "three", "four", "five"];
@@ -22,13 +17,18 @@ const Dice = ({ number = 0 }) => {
     }, 1000);
   };
 
+  useEffect(() => {
+    if (animation) {
+      showAnimationDice();
+    }
+    convertNumberToEnglish(number);
+  }, [number, animation]);
+
   return (
     <div className="RollDice_Wrapper">
       <div className="RollDice">
         <i
-          className={`Die fas fa-dice-${convertNumberToEnglish(number)} ${
-            rollingDice ? "Die-shaking" : "NADA"
-          }`}
+          className={`Die fas fa-dice-${convertNumberToEnglish(number)} ${rollingDice && "Die-shaking"}`}
         />
       </div>
     </div>
