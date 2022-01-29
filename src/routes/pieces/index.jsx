@@ -21,7 +21,7 @@ const Pieces = () => {
           <h1 className="text-bigger text-mandalore">FichAs</h1>
           <h2 className="text-figure-footer text-center">Zona de carga</h2>
           <Cell className="loadZone">
-            <LoadZone roadLenght={7} empty={true} />
+            <LoadZone roadLength={7} isEmpty={true} />
           </Cell>
 
           <Cell className="Pieces_list-wrapper text-center">

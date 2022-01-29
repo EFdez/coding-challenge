@@ -14,7 +14,7 @@ const Dice = ({ number = 0, animation = true }) => {
     setRollingDice(true);
     setTimeout(() => {
       setRollingDice(false);
-    }, 1000);
+    }, 1200);
   };
 
   useEffect(() => {

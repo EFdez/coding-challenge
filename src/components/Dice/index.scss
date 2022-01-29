@@ -21,6 +21,12 @@
 .Die {
   font-size: 5em;
   color: slateblue;
+  transform: scale(1);
+  transition-duration: 500ms;
+  &:hover, &:active{
+    transform: scale(0.9);
+    transition-duration: 500ms;
+  }
 }
 
 .Die-shaking {

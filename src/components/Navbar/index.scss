@@ -78,7 +78,7 @@
   a {
     color: black;
     &:active {
-      color: #fcc433;
+      color: #ffd54e;
     }
   }
 }
@@ -89,11 +89,14 @@
 
 .Collapsed-menu {
   margin-top: -155px;
-
   &_container {
+    background: none;
     z-index: 1;
     display: flex;
     align-items: flex-end;
     box-shadow: none;
+  }
+  a {
+    color: #ffd54e;
   }
 }

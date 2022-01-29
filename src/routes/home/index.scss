@@ -1,16 +1,121 @@
-
 .Home {
   display: flex;
+  justify-content: center;
   width: 100%;
-  &_container{
+  color: #ffd54e;
+  &_container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: absolute;
     width: 100%;
-    padding-bottom: 2rem;
+    padding: 2rem;
+    border: solid 1px #ffd54e;
+    background: black;
+    height: 70vh;
+    overflow: hidden;
   }
-  .contact-data {
-    width: 90%;
+
+  p {
+    color: #ffff82;
+  }
+
+  .home-button {
+    color: #ffff82;
+    text-decoration: underline;
+    background: none;
+    :hover{
+      background: none !important;
+    }
+  }
+
+  /* Set the font, lean the board, position it */
+  #board {
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+    transform: perspective(300px) rotateX(25deg);
+    transform-origin: 50% 100%;
+    text-align: justify;
+    position: absolute;
+    margin-left: -9em;
+    font-weight: bold;
+    overflow: hidden;
+    font-size: 350%;
+    height: 50em;
+    width: 18em;
+    bottom: 0;
+    left: 50%;
+    overflow: hidden;
+  }
+
+  #board:after {
+    position: absolute;
+    content: " ";
+    bottom: 60%;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  #content {
+    animation: scroll 90s linear 10s;
+    position: relative;
+    top: 100%;
+  }
+
+  #title,
+  #subtitle {
+    text-align: center;
+  }
+
+  .intro {
+    top: 30%;
+    z-index: 1;
+    animation: intro 6s ease-out 1s;
+    color: rgb(75, 213, 238);
+    font-weight: 400;
+    font-size: 300%;
+    opacity: 0;
+  }
+
+  .end-text {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    z-index: 99;
+    cursor: pointer;
+    a, a:active{
+      color: #ffff82;
+      text-decoration: underline;
+    }
+  }
+}
+
+
+@keyframes intro {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: -170%;
   }
 }

@@ -35,9 +35,30 @@ code {
   src: local("Mandalore"), url(./assets/fonts/mandalore.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "DistantGalaxy";
+  src: local("SfDistantGalaxy"), url(./assets/fonts/SfDistantGalaxy.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "DistantGalaxySymbol";
+  src: local("SfDistantGalaxySymbols"), url(./assets/fonts/SfDistantGalaxySymbols.ttf) format("truetype");
+}
 .App_container {
   display: flex;
   flex-direction: column;
+}
+
+.text-starwars {
+  font-family: "DistantGalaxy";
+}
+
+.text-symbols {
+  font-family: "DistantGalaxySymbol";
+  transition: font-family .2s ease;
+  :hover{
+    font-family: "DistantGalaxy";
+  }
 }
 
 .text-mandalore {
@@ -90,10 +111,6 @@ code {
 .frog-svg {
   fill: #6b8d3f;
   filter: drop-shadow(0px 6px 3px #334121);
-}
-.grey-svg{
-  
-  fill:lightslategrey
 }
 
 .cookie-svg {

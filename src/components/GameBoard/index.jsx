@@ -27,16 +27,18 @@ const GameBoard = () => {
   const [diceNumber, setDiceNumber] = useState(undefined);
   const [groguPosition, setGroguPosition] = useState(0);
   const [winner, setWinner] = useState(undefined);
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [waiting, setWaiting] = useState(true)
 
   function openModal() {
-    setIsOpen(true);
+    setModalIsOpen(true);
   }
 
   const getRandomNumber = () => {
     const randomNumber = Math.floor(Math.random() * (1, DICE_FACES) + 1);
     setDiceNumber(randomNumber);
     setMovementAction(randomNumber);
+    setWaiting(true)
   };
 
   const unloadAction = (thing) => {
@@ -59,52 +61,60 @@ const GameBoard = () => {
       4: () => groguMoves(),
       defaultAction: () => console.log("no existe acción"),
     };
-    return diceActions[diceAction]
+    setTimeout(() => {
+      setWaiting(false)
+      return diceActions[diceAction]
       ? diceActions[diceAction]()
       : diceActions.defaultAction();
+    }, 500);
+
   };
 
-  useEffect(() => {
-    const checkEmptyTastyThings = Object.values(tastyThings).every(
-      (elm) => elm === 0
-    );
+  const checkWinner = () => {
+    const checkEmptyTastyThings = Object.values(tastyThings).every((elm) => elm === 0);
     if (groguPosition === MAX_LENGTH_ROAD) {
       setWinner("Grogu");
-      openModal(winner);
     }
     if (checkEmptyTastyThings) {
       setWinner("Mando");
+    }
+    if (winner) {
       openModal(winner);
     }
+  }
+
+  useEffect(() => {
+    checkWinner()
   }, [tastyThings, groguPosition, winner]);
 
   return (
     <>
-      <Grid className="display GameBoard_container text-center">
-        <Cell small={10} className="medium-offset-1">
-          <button className="cursor-pointer" onClick={getRandomNumber}>
-            <Dice number={diceNumber ? diceNumber : 5} />
-          </button>
-          <p className={`${diceNumber ? "" : "hidden"}`}>
-            Ha salido el nº {diceNumber}
-          </p>
-        </Cell>
-      </Grid>
+      <Cell small={10} className="text-center">
+        <button className="cursor-pointer" onClick={getRandomNumber}>
+          <Dice number={diceNumber ? diceNumber : 5} />
+        </button>
+        <p className={`${diceNumber ? "" : "hidden"}`}>
+          {waiting ? '...' : `Ha salido el nº ${diceNumber}`}
+        </p>
+      </Cell>
 
-      <LoadZone
-        roadLenght={MAX_LENGTH_ROAD}
-        groguPosition={groguPosition}
-      />
+      <Cell small={12}>
+        <LoadZone
+          roadLength={MAX_LENGTH_ROAD}
+          groguPosition={groguPosition}
+        />
+      </Cell>
 
-      <Grid className="display GameBoard_container text-center">
-        <Cell className="Pieces_list-wrapper">
+      <Grid className="Pieces_list-wrapper text-center">
+        <Cell className='Pieces' small={4}>
           <FoodContainer
             food="frog"
             Icon={Frog}
             title="Ranas"
             unload={tastyThings["frog"]}
           />
-
+        </Cell>
+        <Cell className='Pieces' small={4}>
           <FoodContainer
             food="egg"
             Icon={Egg}
@@ -112,6 +122,9 @@ const GameBoard = () => {
             separator={true}
             unload={tastyThings["egg"]}
           />
+        </Cell>
+
+        <Cell className='Pieces' small={4}>
           <FoodContainer
             food="cookie"
             Icon={Cookie}
@@ -121,7 +134,7 @@ const GameBoard = () => {
         </Cell>
       </Grid>
 
-     {modalIsOpen &&  <ClosingModal winner={winner} isOpen={modalIsOpen} />}
+      {modalIsOpen && <ClosingModal winner={winner} isOpen={modalIsOpen} />}
 
     </>
   );

@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ReactComponent as GroguPod } from "../../assets/images/Grogu-Pod.svg";
 import { ReactComponent as Wardrobe } from "../../assets/images/Wardrobe.svg";
 
 import "./index.scss";
 
-const LoadZone = ({ roadLength, groguPosition }) => {
-  const tiles = roadLength ? roadLength + 1 : 7;
-  const roadArray = new Array(tiles).fill(0).map((el, index) => index);
-  roadArray.splice(tiles - 1, 1, "wardrobe");
+const LoadZone = ({ roadLength, groguPosition, isEmpty }) => {
+
+  const [totalTiles, setTotalTiles] = useState(roadLength)
+
+  const roadArray = new Array(isEmpty ? roadLength : roadLength + 1).fill(0).map((el, index) => index);
+  roadArray.splice(totalTiles - 1, 1, "wardrobe");
   roadArray.splice(groguPosition, 1, "grogu");
 
   const drawRoadEmpty = () => {
@@ -20,21 +22,22 @@ const LoadZone = ({ roadLength, groguPosition }) => {
 
   const drawRoadGrogu = (groguPosition) => {
     return roadArray.map((tile, index) => {
-      if (index + 1 === groguPosition) {
+      if (index === groguPosition) {
         return (
           <div key={index} className="grogu-svg animate-floating">
             <GroguPod />
           </div>
-        )} else if (index + 1 === 7) {
-          return (
-            <div key={index} className="wardrobe-svg animate-wiggle">
-              <Wardrobe />
-            </div>
-          )
+        )
+      } else if (index === totalTiles) {
+        return (
+          <div key={index} className="wardrobe-svg animate-wiggle">
+            <Wardrobe />
+          </div>
+        )
       } else {
         return (
           <p key={index} className="roadTile">
-            {index + 1}
+            {index}
           </p>
         );
       }
@@ -42,14 +45,14 @@ const LoadZone = ({ roadLength, groguPosition }) => {
   };
 
   useEffect(() => {
-    drawRoadGrogu(groguPosition);
-  }, [groguPosition, roadArray]);
+    if (!isEmpty) {
+      drawRoadGrogu(groguPosition);
+    }
+  }, [groguPosition, roadArray, roadLength]);
 
   return (
     <div className="roadTile-wrapper">
-      {!groguPosition && drawRoadEmpty()}
-      {groguPosition && drawRoadGrogu(groguPosition)}
-      
+      {isEmpty ? drawRoadEmpty() : drawRoadGrogu(groguPosition)}
     </div>
   );
 };

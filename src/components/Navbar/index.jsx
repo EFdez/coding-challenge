@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const [isActive, setActive] = useState(false);
 
-  let toggleClassCollapsedMenu = () => {
+  const toggleClassCollapsedMenu = () => {
     setActive(!isActive);
   }
 
@@ -53,9 +53,9 @@ const Navbar = () => {
         (<div className='Collapsed-menu show-for-small-only'>
           <Grid className="Navbar Collapsed-menu_container">
             <Cell className="Navbar_links">
-              <a onclick={toggleClassCollapsedMenu} href="/rules">Reglas del juego</a>
-              <a onclick={toggleClassCollapsedMenu} href="/pieces">Fichas</a>
-              <a onclick={toggleClassCollapsedMenu} href="/game">Juego</a>
+              <a onClick={toggleClassCollapsedMenu} href="/rules">Reglas del juego</a>
+              <a onClick={toggleClassCollapsedMenu} href="/pieces">Fichas</a>
+              <a onClick={toggleClassCollapsedMenu} href="/game">Juego</a>
             </Cell>
           </Grid>
         </div>
