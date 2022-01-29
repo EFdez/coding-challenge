@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import { Grid, Cell } from "react-foundation";
-
 const FoodContainer = ({
   food,
   Icon,
