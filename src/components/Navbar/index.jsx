@@ -53,9 +53,9 @@ const Navbar = () => {
         (<div className='Collapsed-menu show-for-small-only'>
           <Grid className="Navbar Collapsed-menu_container">
             <Cell className="Navbar_links">
-              <a onClick={toggleClassCollapsedMenu} href="/rules">Reglas del juego</a>
-              <a onClick={toggleClassCollapsedMenu} href="/pieces">Fichas</a>
-              <a onClick={toggleClassCollapsedMenu} href="/game">Juego</a>
+              <NavLink onClick={toggleClassCollapsedMenu} to="/rules">Reglas del juego</NavLink>
+              <NavLink onClick={toggleClassCollapsedMenu} to="/pieces">Fichas</NavLink>
+              <NavLink onClick={toggleClassCollapsedMenu} to="/game">Juego</NavLink>
             </Cell>
           </Grid>
         </div>

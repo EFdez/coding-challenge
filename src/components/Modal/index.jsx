@@ -5,7 +5,7 @@ import Modal from "react-modal";
 
 import "./index.scss"
 
-const ClosingModal = (winner, isOpen) => {
+const ClosingModal = ({winner, isOpen}) => {
     function closeModal() {
         window.location.reload(false);
     }

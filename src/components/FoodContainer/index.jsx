@@ -13,7 +13,7 @@ const FoodContainer = ({
   const drawItems = () => {
     return arrayItems.map((item, index) => {
       return (
-        <div className={`Piece_${food} `}>
+        <div key={index} className={`Piece_${food} `}>
           <Icon />
         </div>
       )

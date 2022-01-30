@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Grid, Cell } from "react-foundation";
+import { NavLink } from "react-router-dom";
 
 import "./index.scss";
 
@@ -42,7 +43,7 @@ function Home() {
     <Grid className="grid-container Home">
       <Cell small={10} className="Home_container stars">
         <div className="end-text">
-          <a href="/game">Ok</a>
+          <NavLink to="/game">Ok</NavLink>
         </div>
 
         {!showCrawl ?
